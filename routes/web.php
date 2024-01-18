@@ -29,6 +29,7 @@ ROute::group(['prefix' => LaravelLocalization::setLocale(),'middleware' => [ 'lo
     Route::get('/product/{id?}', [App\Http\Controllers\ProductController::class, 'read'])->name('product.read');
     Route::post('/product-update', [App\Http\Controllers\ProductController::class, 'update'])->name('product.update');
     Route::post('/product-delete', [App\Http\Controllers\ProductController::class, 'delete'])->name('product.delete');
+    Route::post('/product-filter', [App\Http\Controllers\ProductController::class, 'filter'])->name('product.filter');
 
     Auth::routes();
 });

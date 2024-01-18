@@ -99,5 +99,21 @@ class ProductController extends Controller
             }
         }
     }
-   
+    public function filter(Request $request)
+    { 
+        $filteredProducts = new Product();
+
+        if ($request->has('name')) {
+            $name = $request->name;
+            $filteredProducts->where('name', 'LIKE', '%' . $name . '%')->get();
+        }
+
+        if ($request->has('category')) {
+            $category = $request->category;
+            $filteredProducts->where('category', $category)->get();
+        }
+
+        return view("filteredProducts", compact("filteredProducts"));
+
+    }
 }
